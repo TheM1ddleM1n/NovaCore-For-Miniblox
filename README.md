@@ -1,4 +1,4 @@
-# NovaCore V2.9 Enhanced - Premium Miniblox Userscript 💎
+# NovaCore V3 Enhanced - Premium Miniblox Userscript 💎
 
 <div align="center">
 
@@ -16,7 +16,7 @@
 
 ## 🎯 Overview
 
-NovaCore V2.9 is a powerful, modular Tampermonkey userscript that enhances your Miniblox experience with real-time performance monitoring, customizable themes, and quality-of-life improvements. Built on the foundation of NovaCore V1 by @Scripter132132, this enhanced version features significant performance optimizations, memory management improvements, and a sleek modern UI.
+NovaCore V3 is a powerful, modular Tampermonkey userscript that enhances your Miniblox experience with real-time performance monitoring, customizable themes, and quality-of-life improvements. Built on the foundation of NovaCore V1 by @Scripter132132, this enhanced version features significant performance optimizations, memory management improvements, and a sleek modern UI.
 
 ### ✨ Key Highlights
 
@@ -132,10 +132,10 @@ NovaCore V2.9 is a powerful, modular Tampermonkey userscript that enhances your 
 ### Script Metadata
 
 ```javascript
-// @name         NovaCore V2.9 Enhanced
+// @name         NovaCore V3 Enhanced
 // @namespace    http://github.com/TheM1ddleM1n/
-// @version      2.9
-// @description  NovaCore V2 with improved performance, memory management, and themes!
+// @version      3
+// @description  NovaCore V3 with improved performance, memory management, and themes!
 // @author       (Cant reveal who im), TheM1ddleM1n
 // @match        https://miniblox.io/
 // @grant        none
@@ -201,7 +201,10 @@ We welcome contributions! Here's how you can help:
 
 ## 📋 Changelog
 
-### v2.9 (Current)
+### v3 (Current)
+- Bumped to V3
+
+### v2.9
 
 - No more debug log spam - Removed entire debug system
 - Smarter performance - RAF only runs when actually needed
@@ -270,8 +273,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 ### Special Thanks!
 
-- The Tampermonkey team for the excellent userscript platform!
-- and @Scripter132132!
+- The Tampermonkey team for the excellent userscript platform and @Scripter132132!
 
 ---
 
