@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Version](https://img.shields.io/badge/version-3.1-00ffff?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-3.2-00ffff?style=for-the-badge)
 ![License](https://img.shields.io/badge/license-MIT-00ffff?style=for-the-badge)
 ![Platform](https://img.shields.io/badge/platform-Tampermonkey-00ffff?style=for-the-badge)
 ![Performance](https://img.shields.io/badge/performance-optimized-2ecc71?style=for-the-badge)
@@ -22,9 +22,9 @@ NovaCore V3 Enhanced is a powerful, modular Tampermonkey userscript that enhance
 ### ✨ Key Highlights
 
 - 🚀 **Ultra-Optimized Performance** - 50-70% lighter on resources, zero lag during gameplay
-- 🎨 **8 Stunning Themes + Custom Colors** - Cyan, Purple, Green, Red, Blue, Gold, Pink, Orange + unlimited custom colors
+- 🎨 **3 Stunning Themes + Custom Colors** - Cyan, Crimson Fire, Golden Glow + unlimited custom colors
 - 📊 **Real-Time Monitoring** - FPS, CPS, Real-Time Clock with minimal overhead
-- ⚡ **Anti-AFK System** - Automatic jump prevention to avoid kicks
+- ⚡ **Anti-AFK System** - Automatic jump prevention to avoid kicks (manual toggle)
 - 💾 **Smart Persistence** - Settings auto-save with position memory
 - 🔄 **Auto-Update Checker** - Stay notified of new releases directly from GitHub
 - 🎯 **Draggable Counters** - Reposition any counter anywhere on screen
@@ -44,8 +44,8 @@ NovaCore V3 Enhanced is a powerful, modular Tampermonkey userscript that enhance
 
 ### Quality of Life
 
-- **🎨 Theme System** - Choose from 8 pre-built themes or create your own custom color scheme with the color picker
-- **⚡ Anti-AFK** - Automatically jumps every 5 seconds to prevent kick (thanks to @wytlines100 and devs for the idea!)
+- **🎨 Theme System** - Choose from 3 pre-built themes or create your own custom color scheme with the color picker
+- **⚡ Anti-AFK** - Manually toggle to automatically jump every 5 seconds to prevent kick
 - **🖱️ Draggable Counters** - Reposition any counter anywhere on screen with smooth 30fps dragging
 - **⌨️ Customizable Keybind** - Set your preferred menu toggle key (default keybind: `\`)
 - **🔔 Update Notifications** - Automatic GitHub update checking every hour
@@ -55,6 +55,7 @@ NovaCore V3 Enhanced is a powerful, modular Tampermonkey userscript that enhance
 
 - **Custom Color Picker** - Design your own theme color and save it permanently
 - **Memory-Efficient Design** - Debounced saves, optimized update intervals, perfect cleanup on exit
+- **Consolidated Code** - Refactored counter creation with factory functions (reduced code by 150+ lines)
 - **Responsive UI** - Works perfectly on desktop and mobile devices
 - **Fullscreen Support** - Auto fullscreen button for instant fullscreen toggling
 - **Passive Event Listeners** - Improved browser performance with non-blocking event handling
@@ -130,9 +131,9 @@ NovaCore V3 Enhanced is a powerful, modular Tampermonkey userscript that enhance
 
 ---
 
-## 🛠️ Performance Optimizations (v3.1)
+## 🛠️ Performance Optimizations (v3.2)
 
-### What Makes v3.1 Ultra-Fast?
+### What Makes v3.2 Ultra-Fast?
 
 ✅ **Reduced Update Frequencies**
 - FPS counter updates every 500ms (not 1000ms)
@@ -157,7 +158,14 @@ NovaCore V3 Enhanced is a powerful, modular Tampermonkey userscript that enhance
 - Smoother, less resource-intensive dragging
 - Prevents DOM update spam
 
-**Result:** 50-70% lighter on system resources with **zero lag** (V3 was laggy LOL) during gameplay!
+✅ **Code Refactoring (v3.2 NEW)**
+- Consolidated counter creation with factory functions
+- Unified text update logic
+- Removed 150+ lines of duplicate code
+- Session timer removed
+- Streamlined codebase for better maintainability
+
+**Result:** 50-70% lighter on system resources with **zero lag** during gameplay!
 
 ---
 
@@ -168,8 +176,8 @@ NovaCore V3 Enhanced is a powerful, modular Tampermonkey userscript that enhance
 ```javascript
 // @name         NovaCore V3 Enhanced (Optimized)
 // @namespace    http://github.com/TheM1ddleM1n/
-// @version      3.1
-// @description  NovaCore V3 with optimized performance, zero lag, improved memory management
+// @version      3.2
+// @description  NovaCore V3 with optimized performance, zero lag, improved memory management, consolidated code
 // @author       (Cant reveal who im), TheM1ddleM1n
 // @match        https://miniblox.io/
 // @grant        none
@@ -180,13 +188,8 @@ NovaCore V3 Enhanced is a powerful, modular Tampermonkey userscript that enhance
 | Theme | Primary Color | Use Case |
 |-------|---------------|----------|
 | Cyan (Default) | `#00ffff` | Classic NovaCore aesthetic |
-| Purple Dream | `#9b59b6` | Elegant and mysterious |
-| Matrix Green | `#2ecc71` | Hacker vibes |
 | Crimson Fire | `#e74c3c` | Bold and aggressive |
-| Ocean Blue | `#3498db` | Cool and calming |
 | Golden Glow | `#f39c12` | Warm and premium |
-| Bubblegum Pink | `#ff69b4` | Fun and playful |
-| Sunset Orange | `#ff6b35` | Energetic and vibrant |
 | Custom | Your choice | Unlimited customization! |
 
 ### Storage Keys
@@ -236,7 +239,17 @@ We welcome contributions! Here's how you can help:
 
 ## 📋 Changelog
 
-### v3.1 (Current - Optimized)
+### v3.2 (Current - Refactored & Streamlined)
+
+- 🏗️ **Code Refactoring** - Consolidated counter creation with factory functions
+- ✂️ **Removed Session Timer** - Streamlined feature set
+- 🗑️ **Removed Extra Themes** - Kept only Cyan, Crimson Fire, Golden Glow + Custom
+- 🔄 **Unified Counter Updates** - Single `updateCounterText()` helper function
+- ⚡ **150+ Lines Removed** - Eliminated duplicate DOM creation code
+- 🔧 **Anti-AFK Reset** - No longer auto-enables on page reload
+- 📦 **Better Maintainability** - Cleaner codebase for future development
+
+### v3.1 (Optimized)
 
 - 🚀 **50-70% Performance Improvement** - Ultra-optimized for zero lag
 - ✂️ **Removed Session Timer** - Streamlined feature set
@@ -307,7 +320,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 ### Development Team
 
 - **Original Creator:** [@Scripter132132](https://github.com/Scripter132132) - NovaCore V1 foundation!
-- **Lead Dev:** [@TheM1ddleM1n](https://github.com/TheM1ddleM1n) - V2-3 enhancements, optimizations, and maintenance!
+- **Lead Dev:** [@TheM1ddleM1n](https://github.com/TheM1ddleM1n) - V2-3 enhancements, optimizations, refactoring, and maintenance!
 
 ### Special Thanks
 
