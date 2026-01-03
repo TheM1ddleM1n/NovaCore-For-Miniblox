@@ -157,7 +157,7 @@ NovaCore V3 Enhanced is a powerful, modular Tampermonkey userscript that enhance
 - Smoother, less resource-intensive dragging
 - Prevents DOM update spam
 
-**Result:** 50-70% lighter on system resources with **zero lag** during gameplay!
+**Result:** 50-70% lighter on system resources with **zero lag** (V3 was laggy LOL) during gameplay!
 
 ---
 
