@@ -60,6 +60,8 @@ NovaCore V3 Enhanced is a powerful, modular Tampermonkey userscript that enhance
 - **Fullscreen Support** - Auto fullscreen button for instant fullscreen toggling
 - **Passive Event Listeners** - Improved browser performance with non-blocking event handling
 
+- ***COMING SOON... UI Chat for NovaCore Players (Which I will host a server on firebase and maintain on there! Exciting news! However, there will be some limitations..)***
+
 ---
 
 ## 📦 Installation
