@@ -59,6 +59,7 @@ NovaCore V3 Enhanced is a powerful, modular Tampermonkey userscript that enhance
 - **Responsive UI** - Works perfectly on desktop and mobile devices
 - **Fullscreen Support** - Auto fullscreen button for instant fullscreen toggling
 - **Passive Event Listeners** - Improved browser performance with non-blocking event handling
+- **Coming soon** tried the UI chat again (it worked!) (im running it via railway) (but i need to compile all of the v3.2 code on the tampermonkey for it to work!) 
 
 ---
 
