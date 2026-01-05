@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Version](https://img.shields.io/badge/version-3.2-00ffff?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-3.3-00ffff?style=for-the-badge)
 ![License](https://img.shields.io/badge/license-MIT-00ffff?style=for-the-badge)
 ![Platform](https://img.shields.io/badge/platform-Tampermonkey-00ffff?style=for-the-badge)
 ![Performance](https://img.shields.io/badge/performance-optimized-2ecc71?style=for-the-badge)
