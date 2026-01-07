@@ -655,9 +655,9 @@ svg text { font-family: Segoe UI, sans-serif; font-weight: 700; font-size: 72px;
     function measurePing() {
         return new Promise((resolve) => {
             const startTime = performance.now();
-            
+
             // Try to fetch a tiny resource to measure latency
-            fetch(window.location.origin + '/', { 
+            fetch(window.location.origin + '/', {
                 method: 'HEAD',
                 cache: 'no-cache',
                 mode: 'no-cors'
@@ -676,18 +676,18 @@ svg text { font-family: Segoe UI, sans-serif; font-weight: 700; font-size: 72px;
     function updatePingCounter() {
         measurePing().then(ping => {
             state.pingStats.currentPing = ping;
-            
+
             // Update statistics
             state.pingStats.pingHistory.push(ping);
             if (state.pingStats.pingHistory.length > 60) {
                 state.pingStats.pingHistory.shift();
             }
-            
+
             const sum = state.pingStats.pingHistory.reduce((a, b) => a + b, 0);
             state.pingStats.averagePing = Math.round(sum / state.pingStats.pingHistory.length);
             state.pingStats.peakPing = Math.max(...state.pingStats.pingHistory);
             state.pingStats.minPing = Math.min(...state.pingStats.pingHistory);
-            
+
             updateCounterText('ping', `PING: ${ping}ms`);
         });
     }
@@ -1115,15 +1115,31 @@ svg text { font-family: Segoe UI, sans-serif; font-weight: 700; font-size: 72px;
 
         menuContent.appendChild(updateSection);
         const creditsSection = document.createElement('div');
-        creditsSection.className = 'settings-section';
-        creditsSection.innerHTML = `
-            <div style="text-align: center; font-size: 0.85rem; color: #999;">
-                <div><strong style="color: var(--nova-primary);">NovaCore v${SCRIPT_VERSION}</strong></div>
-                <div>Original repo by <strong>@Scripter132132</strong></div>
-                <div>Enhanced by <strong>@TheM1ddleM1n!</strong></div>
+creditsSection.className = 'settings-section';
+creditsSection.innerHTML = `
+    <div style="text-align: center; font-size: 0.85rem; color: #999;">
+        <div style="margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid rgba(0, 255, 255, 0.2);">
+            <strong style="color: var(--nova-primary); font-size: 1rem; display: block; margin-bottom: 6px;">✨ NovaCore v${SCRIPT_VERSION}</strong>
+            <div style="font-size: 0.8rem; color: #666;">Premium Miniblox Enhancement</div>
+        </div>
+
+        <div style="margin-bottom: 12px;">
+            <div style="margin-bottom: 8px;">
+                <strong style="color: #00ffff;">👨‍💻 Original Creator</strong>
+                <div style="color: #aaa;">@Scripter132132</div>
             </div>
-        `;
-        menuContent.appendChild(creditsSection);
+            <div>
+                <strong style="color: #f39c12;">🔧 Enhanced By</strong>
+                <div style="color: #aaa;">@TheM1ddleM1n</div>
+            </div>
+        </div>
+
+        <div style="font-size: 0.75rem; color: #555; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(0, 255, 255, 0.15);">
+            MIT License • Open Source • Made with 💎
+        </div>
+    </div>
+`;
+menuContent.appendChild(creditsSection);
 
         menuOverlay.appendChild(menuContent);
         document.body.appendChild(menuOverlay);
