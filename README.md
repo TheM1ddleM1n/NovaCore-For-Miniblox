@@ -101,12 +101,17 @@
 
 ## 📋 Version History
 
-**v3.4** — Ping counter, performance improvements, bug fixes
-**v3.3** — Code refactoring, consolidated factory functions
-**v3.2** — 150+ lines removed, unified counter updates
-**v3.0-3.1** — Core optimizations, theme system, anti-AFK
-**v2.0-2.9** — Development phases
-**v1.0** — Original by @Scripter132132
+- **v3.4** — Ping counter, performance improvements, bug fixes
+
+- **v3.3** — Code refactoring, consolidated factory functions
+
+- **v3.2** — 150+ lines removed, unified counter updates
+
+- **v3.0-3.1** — Core optimizations, theme system, anti-AFK
+
+- **v2.0-2.9** — Development phases
+
+- **v1.0** — Original by @Scripter132132
 
 ---
 
