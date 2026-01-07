@@ -1120,7 +1120,7 @@ creditsSection.className = 'settings-section';
 creditsSection.innerHTML = `
     <div style="text-align: center; font-size: 0.85rem; color: #999;">
         <div style="margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid rgba(0, 255, 255, 0.2);">
-            <strong style="color: var(--nova-primary); font-size: 1rem; display: block; margin-bottom: 6px;">✨ NovaCore v${SCRIPT_VERSION}</strong>
+            <strong style="color: var(--nova-primary); font-size: 1rem; display: block; margin-bottom: 6px;">✨ NovaCoreX v${SCRIPT_VERSION}</strong>
             <div style="font-size: 0.8rem; color: #666;">Premium Miniblox Enhancement</div>
         </div>
 
