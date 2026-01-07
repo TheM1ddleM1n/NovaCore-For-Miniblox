@@ -1,4 +1,4 @@
-# NovaCore V3 Enhanced - Premium Miniblox Userscript 💎
+# NovaCoreX V3 Enhanced - Premium Miniblox Userscript 💎
 
 <div align="center">
 
@@ -18,7 +18,7 @@
 
 1. **Install Tampermonkey:** [Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) | [Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/) | [Safari](https://apps.apple.com/app/tampermonkey/id1482490089) | [Opera](https://addons.opera.com/en/extensions/details/tampermonkey-beta/)
 
-2. **Install NovaCore:** Click [here](https://github.com/TheM1ddleM1n/NovaCoreForMiniblox/raw/main/NCUserscript.js) and confirm in Tampermonkey
+2. **Install NovaCoreX:** Click [here](https://github.com/TheM1ddleM1n/NovaCoreX/raw/main/NCUserscript.js) and confirm in Tampermonkey
 
 3. **Open** [miniblox.io](https://miniblox.io) and press `\` to open the menu
 
@@ -117,8 +117,8 @@
 
 ## 🤝 Contributing
 
-- **Report bugs:** [GitHub Issues](https://github.com/TheM1ddleM1n/NovaCoreForMiniblox/issues)
-- **Suggest features:** [GitHub Discussions](https://github.com/TheM1ddleM1n/NovaCoreForMiniblox/discussions)
+- **Report bugs:** [GitHub Issues](https://github.com/TheM1ddleM1n/NovaCoreX/issues)
+- **Suggest features:** [GitHub Discussions](https://github.com/TheM1ddleM1n/NovaCoreX/discussions)
 - **Submit code:** Fork → create feature branch → submit PR
 
 ---
@@ -137,8 +137,8 @@
 
 ## 📞 Support
 
-- 🐛 Issues: [github.com/TheM1ddleM1n/NovaCoreForMiniblox/issues](https://github.com/TheM1ddleM1n/NovaCoreForMiniblox/issues)
-- 💬 Discussions: [github.com/TheM1ddleM1n/NovaCoreForMiniblox/discussions](https://github.com/TheM1ddleM1n/NovaCoreForMiniblox/discussions)
+- 🐛 Issues: [github.com/TheM1ddleM1n/NovaCoreForMiniblox/issues](https://github.com/TheM1ddleM1n/NovaCoreX/issues)
+- 💬 Discussions: [github.com/TheM1ddleM1n/NovaCoreForMiniblox/discussions](https://github.com/TheM1ddleM1n/NovaCoreX/discussions)
 
 ---
 
