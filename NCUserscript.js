@@ -1138,6 +1138,14 @@ creditsSection.innerHTML = `
             MIT License • Open Source • Made with 💎
         </div>
     </div>
+
+    <button style="margin-top: 14px; width: 100%; background: rgba(231, 76, 60, 0.2); border: 2px solid #e74c3c; color: #e74c3c; padding: 10px; border-radius: 8px; font-family: Segoe UI, sans-serif; font-weight: 700; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;"
+            onmouseover="this.style.background='#e74c3c'; this.style.color='white'; this.style.transform='translateY(-2px)';"
+            onmouseout="this.style.background='rgba(231, 76, 60, 0.2)'; this.style.color='#e74c3c'; this.style.transform='translateY(0)';"
+            onclick="window.open('https://github.com/${GITHUB_REPO}/issues/new?labels=bug&title=Bug%20Report&body=**Description:**%0A%0A**Steps%20to%20Reproduce:**%0A%0A**Expected%20Behavior:**%0A%0A**Actual%20Behavior:**%0A%0A**NovaCore%20Version:** v${SCRIPT_VERSION}', '_blank');">
+            🐛 Report a Bug
+        </button>
+    </div>
 `;
 menuContent.appendChild(creditsSection);
 
