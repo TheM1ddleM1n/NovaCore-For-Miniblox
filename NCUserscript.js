@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NovaCoreX V3!
 // @namespace    M1ddleM1n and Scripter on top!
-// @version      3.4
+// @version      3.5
 // @description  NovaCoreX V3 with optimized performance, zero lag, improved memory management, consolidated code and a ping counter (for network)
 // @author       Scripter, TheM1ddleM1n
 // @icon         https://raw.githubusercontent.com/TheM1ddleM1n/NovaCoreX/refs/heads/main/NovaCoreX.png
