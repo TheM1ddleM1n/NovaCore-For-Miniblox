@@ -16,7 +16,7 @@
     const TIMING = {
         INTRO_CHECK_APPEAR: 900, INTRO_BUTTON_EXIT: 3200, INTRO_TEXT_START: 4000,
         INTRO_CHECKMARK_APPEAR: 6300, INTRO_TOTAL_DURATION: 7000, INTRO_FADE_OUT: 1000,
-        HINT_TEXT_DURATION: 4000, FPS_UPDATE_INTERVAL: 500, CPS_UPDATE_INTERVAL: 150,
+        HINT_TEXT_DURATION: 4000, FPS_UPDATE_INTERVAL: 500, CPS_UPDATE_INTERVAL: 250,
         CPS_WINDOW: 1000, PING_UPDATE_INTERVAL: 2000, SAVE_DEBOUNCE: 2000, STATS_UPDATE_INTERVAL: 10000
     };
 
@@ -562,7 +562,8 @@ svg text { font-family: Segoe UI, sans-serif; font-weight: 700; font-size: 72px;
         const down = new KeyboardEvent("keydown", { key: " ", code: "Space", keyCode: 32, which: 32, bubbles: true });
         const up = new KeyboardEvent("keyup", { key: " ", code: "Space", keyCode: 32, which: 32, bubbles: true });
         window.dispatchEvent(down);
-        setTimeout(() => window.dispatchEvent(up), 50);
+        const t = setTimeout(() => window.dispatchEvent(up), 50);
+        trackTimeout(t);
     }
 
     function updateAntiAfkCounter() {
@@ -591,9 +592,145 @@ svg text { font-family: Segoe UI, sans-serif; font-weight: 700; font-size: 72px;
         if (state.intervals.antiAfk) { clearInterval(state.intervals.antiAfk); untrackInterval(state.intervals.antiAfk); state.intervals.antiAfk = null; }
     }
 
-    function createMenu() {
-        if (cachedElements.menu) return cachedElements.menu;
+    const CHANGELOG = {
+        '3.6': [
+            '🔧 Fixed critical memory leaks in timeout/interval tracking',
+            '🛡️ Added null-safety checks throughout codebase',
+            '✅ Fixed DOM element removal race conditions',
+            '🎯 Prevented zombie event listeners from accumulating',
+            '⚡ Optimized cleanup functions for proper garbage collection',
+            '🔌 Added timeout/interval tracking system',
+            '📋 Changelog Viewer - displays update history'
+        ],
+        '3.5': [
+            '✨ Custom color theme system implementation',
+            '💾 localStorage persistence for settings',
+            '🎨 Real-time theme color picker',
+            '📊 Session statistics tracking',
+            '🔄 Auto-save positions on drag'
+        ],
+        '3.4': [
+            '⚙️ Code refactoring and optimization',
+            '🎭 Unified counter UI system',
+            '🔋 Improved performance loop management'
+        ],
+        '3.0-3.3': [
+            '🚀 Core feature implementation',
+            '🎮 Gaming-focused UI/UX',
+            '📈 Performance monitoring tools'
+        ],
+        '1.0-2.9': [
+            '👶 Initial development phases',
+            '📝 Original by @Scripter132132'
+        ]
+    };
 
+    function createChangelogModal() {
+        const modal = document.createElement('div');
+        modal.id = 'nova-changelog-modal';
+        modal.style.cssText = `
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 10000001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        `;
+
+        const container = document.createElement('div');
+        container.style.cssText = `
+            background: rgba(17, 17, 17, 0.95);
+            border: 2px solid var(--nova-primary);
+            border-radius: 16px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        `;
+
+        const title = document.createElement('h2');
+        title.style.cssText = `
+            color: var(--nova-primary);
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            font-weight: 900;
+        `;
+        title.textContent = 'Changelog 📜';
+        container.appendChild(title);
+
+        Object.entries(CHANGELOG).forEach(([version, changes]) => {
+            const section = document.createElement('div');
+            section.style.cssText = `
+                margin-bottom: 24px;
+                padding-bottom: 16px;
+                border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            `;
+
+            const versionTitle = document.createElement('h3');
+            versionTitle.style.cssText = `
+                color: var(--nova-primary);
+                margin-bottom: 10px;
+                font-size: 1.3rem;
+                font-weight: 700;
+            `;
+            versionTitle.textContent = `v${version}`;
+            section.appendChild(versionTitle);
+
+            const list = document.createElement('ul');
+            list.style.cssText = `
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                color: #ccc;
+            `;
+
+            changes.forEach(change => {
+                const item = document.createElement('li');
+                item.style.cssText = `
+                    padding: 6px 0;
+                    padding-left: 20px;
+                    font-size: 0.95rem;
+                    line-height: 1.4;
+                `;
+                item.textContent = change;
+                list.appendChild(item);
+            });
+
+            section.appendChild(list);
+            container.appendChild(section);
+        });
+
+        const closeBtn = document.createElement('button');
+        closeBtn.style.cssText = `
+            width: 100%;
+            margin-top: 20px;
+            background: var(--nova-primary);
+            color: #000;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        `;
+        closeBtn.textContent = 'Close';
+        closeBtn.onmouseover = () => closeBtn.style.transform = 'scale(1.02)';
+        closeBtn.onmouseout = () => closeBtn.style.transform = 'scale(1)';
+        closeBtn.onclick = () => modal.remove();
+        container.appendChild(closeBtn);
+
+        modal.appendChild(container);
+        modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+        document.body.appendChild(modal);
+    }
+
+    function createMenu() {
         const menuOverlay = document.createElement('div');
         menuOverlay.id = 'nova-menu-overlay';
         const menuHeader = document.createElement('div');
@@ -608,7 +745,7 @@ svg text { font-family: Segoe UI, sans-serif; font-weight: 700; font-size: 72px;
             const btn = document.createElement('button');
             btn.className = 'nova-menu-btn';
             btn.textContent = text;
-            btn.addEventListener('click', onClick, { passive: false });
+            btn.addEventListener('click', onClick);
             focusableElements.push(btn);
             return btn;
         };
@@ -646,12 +783,15 @@ svg text { font-family: Segoe UI, sans-serif; font-weight: 700; font-size: 72px;
         const fullscreenBtn = createButton('Auto Fullscreen', () => {
             const elem = document.documentElement;
             if (!document.fullscreenElement) {
-                elem.requestFullscreen().catch(err => { console.error(`Error: ${err.message}`); });
+                elem.requestFullscreen().catch(err => { console.error(`Fullscreen error: ${err.message}`); });
             } else {
-                document.exitFullscreen().catch(() => {});
+                document.exitFullscreen();
             }
         });
         menuContent.appendChild(fullscreenBtn);
+
+        const changelogBtn = createButton('📜 View Changelog', createChangelogModal);
+        menuContent.appendChild(changelogBtn);
 
         const colorSection = document.createElement('div');
         colorSection.className = 'settings-section';
@@ -742,20 +882,21 @@ svg text { font-family: Segoe UI, sans-serif; font-weight: 700; font-size: 72px;
     }
 
     function openMenu() {
-        if (!cachedElements.menu) return;
-        cachedElements.menu.classList.add('show');
-        if (cachedElements.header) cachedElements.header.classList.remove('visible');
+        if (cachedElements.menu) {
+            cachedElements.menu.classList.add('show');
+            if (cachedElements.header) cachedElements.header.classList.remove('visible');
+        }
     }
 
     function closeMenu() {
-        if (!cachedElements.menu) return;
-        cachedElements.menu.classList.remove('show');
-        if (cachedElements.header) cachedElements.header.classList.add('visible');
+        if (cachedElements.menu) {
+            cachedElements.menu.classList.remove('show');
+            if (cachedElements.header) cachedElements.header.classList.add('visible');
+        }
     }
 
     function toggleMenu() {
-        if (!cachedElements.menu) return;
-        if (cachedElements.menu.classList.contains('show')) {
+        if (cachedElements.menu && cachedElements.menu.classList.contains('show')) {
             closeMenu();
         } else {
             openMenu();
@@ -763,7 +904,7 @@ svg text { font-family: Segoe UI, sans-serif; font-weight: 700; font-size: 72px;
     }
 
     function setupKeyboardHandler() {
-        const keydownHandler = (e) => {
+        const keyHandler = (e) => {
             if (e.key === state.menuKey) {
                 e.preventDefault();
                 toggleMenu();
@@ -772,8 +913,8 @@ svg text { font-family: Segoe UI, sans-serif; font-weight: 700; font-size: 72px;
                 closeMenu();
             }
         };
-        window.addEventListener('keydown', keydownHandler, { passive: false });
-        addManagedListener(window, 'keydown', keydownHandler, 'menu_keyboard');
+        window.addEventListener('keydown', keyHandler);
+        state.eventListeners.set('keyboard', [{ element: window, event: 'keydown', handler: keyHandler }]);
     }
 
     function restoreSavedState() {
@@ -825,47 +966,25 @@ svg text { font-family: Segoe UI, sans-serif; font-weight: 700; font-size: 72px;
         stopRealTimeCounter();
         stopPingCounter();
         stopAntiAfk();
-
-        // Clear all intervals
-        Object.values(state.intervals).forEach(interval => {
-            if (interval) {
-                clearInterval(interval);
-                untrackInterval(interval);
-            }
+        state.eventListeners.forEach((listeners) => {
+            listeners.forEach(({ element, event, handler }) => {
+                if (element) element.removeEventListener(event, handler);
+            });
         });
-
-        // Clear all timeouts
-        Array.from(state.pendingTimeouts).forEach(id => {
-            clearTimeout(id);
-            untrackTimeout(id);
-        });
-
-        // Cancel RAF
-        if (state.rafId) {
-            cancelAnimationFrame(state.rafId);
-            state.rafId = null;
-        }
-
-        // Remove event listeners
-        state.eventListeners.forEach((listeners, id) => removeAllListeners(id));
         state.eventListeners.clear();
-
-        // Stop performance loop
-        stopPerformanceLoop();
-
-        // Remove DOM elements
-        ['header', 'hint', 'menu'].forEach(key => {
-            if (cachedElements[key] && cachedElements[key].parentElement) {
-                cachedElements[key].remove();
-                cachedElements[key] = null;
-            }
-        });
-
+        Object.values(state.intervals).forEach(interval => { if (interval) { clearInterval(interval); untrackInterval(interval); } });
+        state.pendingTimeouts.forEach(timeout => clearTimeout(timeout));
+        state.pendingIntervals.forEach(interval => clearInterval(interval));
+        state.pendingTimeouts.clear();
+        state.pendingIntervals.clear();
+        if (state.rafId) cancelAnimationFrame(state.rafId);
+        state.performanceLoopRunning = false;
+        state.cpsClicks = [];
+        state.pingStats.pingHistory = [];
         console.log('[NovaCoreX] Cleanup complete!');
     }
 
     window.addEventListener('beforeunload', globalCleanup);
-    window.addEventListener('pagehide', globalCleanup);
 
     function init() {
         console.log(`[NovaCoreX] Initializing v${SCRIPT_VERSION}...`);
@@ -876,23 +995,20 @@ svg text { font-family: Segoe UI, sans-serif; font-weight: 700; font-size: 72px;
         const hint = createHintText();
         const menu = createMenu();
         setupKeyboardHandler();
-
-        const t5 = setTimeout(() => {
+        const t = setTimeout(() => {
             intro.style.animation = 'fadeOut 1s ease forwards';
-            const t6 = setTimeout(() => {
+            const t2 = setTimeout(() => {
                 if (intro.parentElement) intro.remove();
-                if (header) header.classList.add('visible');
-                if (hint) {
-                    hint.style.opacity = '1';
-                    const t7 = setTimeout(() => { if (hint) hint.style.opacity = '0'; }, TIMING.HINT_TEXT_DURATION);
-                    trackTimeout(t7);
-                }
+                header.classList.add('visible');
+                hint.style.opacity = '1';
+                const t3 = setTimeout(() => { hint.style.opacity = '0'; }, TIMING.HINT_TEXT_DURATION);
+                trackTimeout(t3);
                 restoreSavedState();
                 console.log('[NovaCoreX] Initialization completed!');
             }, TIMING.INTRO_FADE_OUT);
-            trackTimeout(t6);
+            trackTimeout(t2);
         }, TIMING.INTRO_TOTAL_DURATION);
-        trackTimeout(t5);
+        trackTimeout(t);
     }
 
     if (document.readyState === 'loading') {
